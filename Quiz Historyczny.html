@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Historyczny</title>
+    <style>
+        body {
+            background: linear-gradient(to right, rgb(255, 255, 255), rgb(228, 10, 10));
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .question {
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .answers {
+            margin-bottom: 20px;
+        }
+
+        #start-btn,
+        #end-btn,
+        #check-btn,
+        #reset-btn {
+            cursor: pointer;
+            padding: 10px;
+            background: linear-gradient(to right,  rgb(255, 255, 255), rgb(228, 10, 10));
+            color: white;
+            border: none;
+            width: 160px;
+            height: 100px;
+            font-size: 30px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        #head {
+            background: linear-gradient(to right,  rgb(255, 255, 255), rgb(228, 10, 10));
+            padding: 5px;
+            font-size: 30px;
+            color: white;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+        }
+
+        #quiz-container {
+            background: linear-gradient(to right,  rgb(255, 255, 255), rgb(228, 10, 10));
+            font-size: 30px;
+            padding: 50px;
+            color: white;
+            text-align: center;
+        }
+
+        #stopa {
+            background: linear-gradient(to right, rgb(255, 255, 255), rgb(228, 10, 10));
+            padding: 5px;
+            color: white;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        #E-mail{
+            width: 300px;
+            height: 50px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="head">
+        <h2>Quiz Historyczny</h2>
+    </header>
+
+    <div id="quiz-container">
+        <p id="quiz-timer">Czas realizacji testu: <span id="time">00:00</span> minut</p>
+
+        <button id="start-btn" onclick="startQuiz()">Start</button>
+
+        <div class="question" id="question1">
+            <p>Pytanie 1: W którym roku był Chrzest Polski?</p>
+            <div class="answers">
+                <label><input type="radio" name="q1" value="966"> 966</label><br>
+                <label><input type="radio" name="q1" value="1025"> 1025</label><br>
+                <label><input type="radio" name="q1" value="1079"> 1079</label>
+            </div>
+        </div>
+
+        <div class="question" id="question2">
+            <p>Pytanie 2: Jak nazwysa się Obecny Prezydent Polski?</p>
+            <div class="answers">
+                <label><input type="text" name="q2" value=""></label><br>
+            </div>
+        </div>
+
+        <div class="question" id="question3">
+            <p>Pytanie 3: W jakim roku była bitwa pod Grunwaldem?</p>
+            <div class="answers">
+                <label><input type="radio" name="q3" value="1333"> 1333</label><br>
+                <label><input type="radio" name="q3" value="1410"> 1410</label><br>
+                <label><input type="radio" name="q3" value="1683"> 1683</label>
+            </div>
+        </div>
+    
+        <div class="question" id="question4">
+            <p>Pytanie 4: Dokładna data ostatnich wyborów parlamentarnych?</p>
+            <div class="answers">
+                <label><input type="date" name="q4" value=""></label><br>
+            </div>
+        </div>
+
+        <div class="question" id="question5">
+            <p>Pytanie 5: Jaki przydomek miał Bolesław I?</p>
+            <div class="answers">
+                <label><input type="radio" name="q5" value="Krzywousty"> Krzywousty</label><br>
+                <label><input type="radio" name="q5" value="Śmiały"> Śmiały</label><br>
+                <label><input type="radio" name="q5" value="Chrobry"> Chrobry</label>
+            </div>
+        </div>
+    
+        <div class="question" id="question6">
+            <p>Pytanie 6: Jak na imie miał władca z przydomkiem "Wielki"?</p>
+            <div class="answers">
+                <label><input type="text" name="q6" value=""></label><br>
+            </div>
+        </div>
+
+        <div class="question" id="question7">
+            <p>Pytanie 7: Jaka była pierwsza dynastia panująca w Polsce?</p>
+            <div class="answers">
+                <label><input type="radio" name="q7" value="Piastów"> Piastów</label><br>
+                <label><input type="radio" name="q7" value="Andegawenów Węgierskich"> Andegawenów Węgierskich</label><br>
+                <label><input type="radio" name="q7" value="Jagiellonów"> Jagiellonów</label>
+            </div>
+        </div>
+    
+        <div class="question" id="question8">
+            <p>Pytanie 8: Data Wybuchu II Wojny Światowej?</p>
+            <div class="answers">
+                <label><input type="date" name="q8" value=""></label><br>
+            </div>
+        </div>
+
+        <div class="question" id="question9">
+            <p>Pytanie 9: Rok ostatniego rozbioru Rzeczpospolitej Obojga Narodów (Polski-Litwy)?</p>
+            <div class="answers">
+                <label><input type="number" name="q9" value=""></label><br>
+            </div>
+        </div>
+    
+        <div class="question" id="question10">
+            <p>Pytanie 10: Jak nazywał się pierwszy historyczny władca Polski?</p>
+            <div class="answers">
+                <label><input type="radio" name="q10" value="Michał"> Michał</label><br>
+                <label><input type="radio" name="q10" value="Marek"> Marek</label><br>
+                <label><input type="radio" name="q10" value="Mieszko"> Mieszko</label>
+            </div>
+        </div>
+
+        <center><button id="check-btn" style="display: none;" onclick="checkQuiz()">Sprawdź</button></center>
+
+        <div id="result" style="display: none;">
+            <p>Wynik: <span id="score"></span></p>
+            <p>Czas: <span id="quiz-time"></span> minut</p>
+            <label for="email-input">Podaj swój e-mail:</label>
+            <input id="E-mail" type="email" id="email-input" required>
+            <button id="reset-btn" onclick="resetQuiz()">Zacznij od nowa</button>
+        </div>
+    </div>
+
+    <script>
+        var totalTime = 0;
+        var timerInterval;
+
+        function startTimer() {
+            var minutes, seconds;
+            timerInterval = setInterval(function () {
+                minutes = parseInt(totalTime / 60, 10);
+                seconds = parseInt(totalTime % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                document.getElementById('time').textContent = minutes + ":" + seconds;
+
+                totalTime++;
+            }, 1000);
+        }
+
+        function startQuiz() {
+            clearInterval(timerInterval);
+            totalTime = 0;
+
+            var questions = document.querySelectorAll('.question');
+            questions.forEach(function (question) {
+                question.style.display = 'block';
+            });
+
+            document.getElementById('check-btn').style.display = 'block';
+
+            startTimer();
+        }
+
+        function resetQuiz() {
+            clearInterval(timerInterval);
+            totalTime = 0;
+
+            var questions = document.querySelectorAll('.question');
+            questions.forEach(function (question) {
+                question.style.display = 'none';
+            });
+
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('time').textContent = '00:00';
+            document.getElementById('email-input').value = '';
+            resetAnswers();
+        }
+
+        function resetAnswers() {
+            var radioAnswers = document.querySelectorAll('input[type="radio"]');
+            radioAnswers.forEach(function (radioAnswer) {
+                radioAnswer.checked = false;
+            });
+
+            var textAnswers = document.querySelectorAll('input[type="text"]');
+            textAnswers.forEach(function (textAnswer) {
+                textAnswer.value = '';
+            });
+
+            var dateAnswers = document.querySelectorAll('input[type="date"]');
+            dateAnswers.forEach(function (dateAnswer) {
+                dateAnswer.value = '';
+            });
+
+            document.getElementById('score').textContent = '';
+            document.getElementById('quiz-time').textContent = '';
+        }
+
+        function checkQuiz() {
+            clearInterval(timerInterval);
+
+            var correctAnswers = [
+                "966", // Pytanie 1
+                "Andrzej Duda", // Pytanie 2
+                "1410", // Pytanie 3
+                "2023-10-15", // Pytanie 4
+                "Chrobry", // Pytanie 5
+                "Kazimierz", // Pytanie 6
+                "Piastów", // Pytanie 7
+                "1939-09-01", // Pytanie 8
+                "1795", // Pytanie 9
+                "Mieszko" // Pytanie 10
+            ];
+
+            var score = 0;
+
+            for (var i = 1; i <= 10; i++) {
+                var selectedAnswer;
+
+                if (i == 2 || i == 4 || i == 6 || i == 8 || i == 9) {
+                    selectedAnswer = document.querySelector('input[name="q' + i + '"]').value;
+                } else {
+                    selectedAnswer = document.querySelector('input[name="q' + i + '"]:checked');
+                    if (selectedAnswer) {
+                        selectedAnswer = selectedAnswer.value;
+                    }
+                }
+
+                if (selectedAnswer && selectedAnswer === correctAnswers[i - 1]) {
+                    score++;
+                }
+            }
+
+            var minutes = parseInt((totalTime - 1) / 60, 10);
+            var seconds = parseInt((totalTime - 1) % 60, 10);
+
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('score').textContent = score + "/10";
+            document.getElementById('quiz-time').textContent = minutes + ":" + (seconds < 10 ? "0" + seconds : seconds);
+
+            var userEmail = document.getElementById('email-input').value;
+            console.log('E-mail użytkownika:', userEmail);
+        }
+    </script>
+
+    <footer id="stopa"></footer>
+</body>
+
+</html>
